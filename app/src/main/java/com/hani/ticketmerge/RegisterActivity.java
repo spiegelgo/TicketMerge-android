@@ -52,13 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnLogin;
 
 
-    Button btnGoogleRegister;
-
-
-    private GoogleSignInClient mGoogleSignInClient;
-    private static final int RC_SIGN_UP = 9002;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,9 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
         btnLogin = findViewById(R.id.btnLogin);
         radioGroupGender = findViewById(R.id.radioGroupGender);
-
-        btnGoogleRegister = findViewById(R.id.btnGoogleRegister);
-
 
         // 회원가입 버튼 클릭 리스너 설정
         View.OnClickListener registerClickListener = new View.OnClickListener() {
@@ -200,14 +190,6 @@ public class RegisterActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        btnGoogleRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

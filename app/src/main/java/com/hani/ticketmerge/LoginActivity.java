@@ -1,7 +1,5 @@
 package com.hani.ticketmerge;
 
-import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,15 +27,6 @@ import com.hani.ticketmerge.config.Config;
 import com.hani.ticketmerge.model.User;
 import com.hani.ticketmerge.model.UserRes;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-
 import java.util.regex.Pattern;
 
 import retrofit2.Call;
@@ -53,11 +42,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     Button btnRegister;
 
-    Button btnGoogleLogin;
-
-//    GoogleSignInClient mGoogleSignInClient;
-//    private static final int RC_SIGN_IN = 9001;
-//    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +53,6 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
-        btnGoogleLogin = findViewById(R.id.btnGoogleRegister);
-
-
 
         // 로그인 버튼 클릭 리스너 설정
         View.OnClickListener loginClickListener = new View.OnClickListener() {
@@ -159,7 +140,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,72 +148,7 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-//        // Firebase Authentication 초기화
-//        firebaseAuth = FirebaseAuth.getInstance();
-//
-//        // 구글 로그인 설정
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestIdToken(getString(R.string.default_web_client_id))
-//                .requestEmail()
-//                .build();
-//        mGoogleSignInClient = GoogleSignIn.getClient(LoginActivity.this, gso);
-//
-//        btnGoogleLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                signInWithGoogle();
-//            }
-//        });
-//
-//    }
-//    private void signInWithGoogle() {
-//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (requestCode == RC_SIGN_IN) {
-//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            try {
-//                // Google 로그인 성공, Firebase에 인증
-//                GoogleSignInAccount account = task.getResult(ApiException.class);
-//                firebaseAuthWithGoogle(account.getIdToken());
-//
-//                // 이제 서버로 idToken을 전송하여 사용자 인증 및 회원가입 처리
-//                // 여기서는 서버와의 통신 코드를 작성해야 합니다.
-//                // 서버에서는 해당 idToken을 검증하여 사용자 정보를 확인하고, 필요한 처리를 수행합니다.
-//                // 예시로 사용자 정보를 받아오는 Retrofit API 호출 코드를 추가할 수 있습니다.
-//
-//            } catch (ApiException e) {
-//                // Google 로그인 실패
-//                Log.w(TAG, "Google sign in failed", e);
-//            }
-//        }
-//    }
-//    private void firebaseAuthWithGoogle(String idToken) {
-//        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-//        firebaseAuth.signInWithCredential(credential)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Firebase 로그인 성공, 로그인된 사용자 정보 가져오기
-//                            FirebaseUser user = firebaseAuth.getCurrentUser();
-//                            // 여기서 회원가입 및 로그인 처리 로직 추가 가능
-//                        } else {
-//                            // Firebase 로그인 실패
-//                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-//                        }
-//                    }
-//                });
     }
-
-
-
 
     Dialog dialog;
     void showProgress(){
